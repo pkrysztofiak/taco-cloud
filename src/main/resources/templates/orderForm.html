@@ -50,6 +50,7 @@
 			
 			<label for="ccCVV">CVV: </label>
 			<input type="text" th:field="*{ccCVV}">
+			<span class="validationError" th:if="${#fields.hasErrors('ccNumber')}" th:errors="*{ccNumber}">CC Number Error</span>
 			<br>
 			
 			<input type="submit" value="Sumbit Order">
