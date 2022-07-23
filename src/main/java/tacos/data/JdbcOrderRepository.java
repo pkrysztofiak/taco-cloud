@@ -82,7 +82,12 @@ public class JdbcOrderRepository implements OrderRepository{
 	}
 	
 	private void saveIngredientRefs(long tacoId, List<IngredientRef> ingredientRefs) {
-		
+		int key = 0;
+		for (IngredientRef ingredientRef : ingredientRefs) {
+			jdbcOperations.update(
+					"insert into Ingredient_Ref (ingredient, taco, taco_key) values (?, ?, ?)", 
+					ingredientRef.getIngredient(), tacoId, key++);
+		}
 	}
 	
 }
